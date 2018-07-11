@@ -1,0 +1,21 @@
+Starting MatrixMath.Timer
+Adding two matrices sequentially
+DONE: Adding two matrices sequentially, execution time: 13
+Adding two matrices with ForkJoinPool
+DONE: Adding two matrices with ForkJoinPool, execution time: 14
+Adding two matrices with Threads
+DONE: Adding two matrices with Threads, execution time: 174
+Adding two matrices with Streams
+DONE: Adding two matrices with Streams, execution time: 3
+Adding two matrices with ThreadPool
+DONE: Adding two matrices with ThreadPool, execution time: 10
+Multiplying to matrices sequentially
+DONE: Multiplying two matrices sequentially, execution time: 2980
+Multiplying two matrices with ForkJoinPool
+DONE: Multiplying two matrices with ForkJoinPool, execution time: 1242
+Multiplying two matrices with Threads
+DONE: Multiplying two matrices with Threads, execution time: 6554
+Multiplying two matrices with Streams
+DONE: Multiplying two matrices with Streams, execution time: 1282
+Multiplying two matrices with ThreadPool
+DONE: Multiplying two matrices with ThreadPool, execution time: 2626

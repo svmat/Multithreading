@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="csc552" default="all">
+  
+  
+  <property file="matrixmath.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.ear"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module CSC552 -->
+  
+  <dirname property="module.csc552.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.csc552" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.csc552" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.csc552" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.csc552" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="csc552.output.dir" value="${module.csc552.basedir}/out/production/CSC552"/>
+  <property name="csc552.testoutput.dir" value="${module.csc552.basedir}/out/test/CSC552"/>
+  
+  <path id="csc552.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="csc552.module.production.classpath">
+    <path refid="${module.jdk.classpath.csc552}"/>
+  </path>
+  
+  <path id="csc552.runtime.production.module.classpath">
+    <pathelement location="${csc552.output.dir}"/>
+  </path>
+  
+  <path id="csc552.module.classpath">
+    <path refid="${module.jdk.classpath.csc552}"/>
+    <pathelement location="${csc552.output.dir}"/>
+  </path>
+  
+  <path id="csc552.runtime.module.classpath">
+    <pathelement location="${csc552.testoutput.dir}"/>
+    <pathelement location="${csc552.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.csc552">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.csc552">
+    <patternset refid="excluded.from.module.csc552"/>
+  </patternset>
+  
+  <path id="csc552.module.sourcepath">
+    <dirset dir="${module.csc552.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.csc552" depends="compile.module.csc552.production,compile.module.csc552.tests" description="Compile module CSC552"/>
+  
+  <target name="compile.module.csc552.production" depends="register.custom.compilers" description="Compile module CSC552; production classes">
+    <mkdir dir="${csc552.output.dir}"/>
+    <javac2 destdir="${csc552.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.csc552}/javac">
+      <compilerarg line="${compiler.args.csc552}"/>
+      <bootclasspath refid="csc552.module.bootclasspath"/>
+      <classpath refid="csc552.module.production.classpath"/>
+      <src refid="csc552.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.csc552"/>
+    </javac2>
+    
+    <copy todir="${csc552.output.dir}">
+      <fileset dir="${module.csc552.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.csc552.tests" depends="register.custom.compilers,compile.module.csc552.production" description="compile module CSC552; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.csc552" description="cleanup module">
+    <delete dir="${csc552.output.dir}"/>
+    <delete dir="${csc552.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.csc552" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.csc552" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
